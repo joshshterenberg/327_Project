@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waste Sorting Guide</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajaz/libs/popper.js/1.12.9/umd/popper.min.js"></script>-->
+  <!--<script src="https://maxcdn.bootsrapcdn.com/bootsrap/4.0.0/js/bootstrap.min.js"></script>-->
+  <!--<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
+  <link href="{{url_for('static', filename='homeStyle.css')}}" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-text">Binz</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-tarhet="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="logout">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="deleet">Delete</a>
+        </li>
+    </div>
+  </div>
+</nav>
+
+<!--Main boxes-->
+<div class="row" style="margin: 0;">
+  <div class="col-md-6">
+    <div class="desc-wrap">
+    <div class="descriptionBx">
+      <h1>Welcome to Binz!</h1>
+      <br>
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              {% for msg in messages %}
+                  <p style="color: #CC0000;">{{msg}}</p>
+              {% endfor %}
+          {% endif %}
+      {% endwith %}
+      <br><p>Do you ever spend time at the waste bins trying to figure out where things belong? This app was designed to help you! Based on how you answer questions about a specific object, this app will give you guidance on what bin to put certain objects in.</p><br><p>In this situation right now? click the start button! Want to learn more about the waste sorting process, check out the resources at <a href="https://en.wikipedia.org/wiki/Environmentalism" style="color:#73E8C9">this link.</a> Happy sorting!</p>
+    </div>
+    <div class="welcomeBx">
+      <button type="button" class="btn1">
+      <div class="start-message">Start sorting!
+      </div>
+      </button>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-3">
+    <div class="user-wrap">
+    <div class="userBx">
+      <div class="card">
+        <div class="table-head">
+        <h4>Leader Board</h4>
+        </div>
+        <div class="table-contents">
+        <table>
+          <tr>
+            <th>Rank</th>
+            <th>User</th>
+            <th>Points</th>
+          </tr>
+          <tr>
+            <td style="background-color: rgba(212,175,55,0.4)">#1</td>
+            <td style="background-color: rgba(212,175,55,0.5)">{{firstuser}}</td>
+            <td style="background-color: rgba(212,175,55,0.4)">{{firstpoints}}</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgba(192,192,192,0.4)">#2</td>
+            <td style="background-color: rgba(192,192,192,0.5)">{{seconduser}}</td>
+            <td style="background-color: rgba(192,192,192,0.4)">{{secondpoints}}</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgba(159,122,52,0.4)">#3</td>
+            <td style="background-color: rgba(159,122,52,0.5)">{{thirduser}}</td>
+            <td style="background-color: rgba(159,122,52,0.4)">{{thirdpoints}}</td>
+          </tr>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-3">
+    <div class="user-wrap">
+    <div class="userBx">
+      <div class="card">
+        <h1>{{name}}</h1>
+        <p class="points">{{points}} points</p>
+        <p class="label">thoughtful planet person</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</body>
+</html>

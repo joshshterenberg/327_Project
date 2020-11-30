@@ -62,7 +62,20 @@ def home():
         user = session["user"]
         pw = session["password"]
         pts = session["points"]
-        return render_template("index.html", name=user, password=pw, points=pts)
+        sorted_users = sorted(users.query.all(), key=lambda x: x.points, reverse=True)
+        name = []
+        points = []
+        for i in range(0,3):
+            #if hasattr(sorted_users[i], "name"):
+            try:
+                name.append(sorted_users[i].name)
+                points.append(sorted_users[i].points)
+            #else:
+            except IndexError:
+                name.append("N/A")
+                points.append(0)
+
+        return render_template("home.html", name=user, password=pw, points=pts, firstuser=name[0], firstpoints=points[0], seconduser=name[1], secondpoints=points[1], thirduser=name[2], thirdpoints=points[2])
     flash("User not in session")
     return redirect(url_for("login"))
 
