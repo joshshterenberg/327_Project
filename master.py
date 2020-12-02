@@ -60,8 +60,7 @@ def login():
 def home():
     if "user" in session:
         user = session["user"]
-        pw = session["password"]
-        pts = session["points"]
+        current = users.query.filter_by(name=user).first()
         sorted_users = sorted(users.query.all(), key=lambda x: x.points, reverse=True)
         name = []
         points = []
@@ -75,7 +74,7 @@ def home():
                 name.append("N/A")
                 points.append(0)
 
-        return render_template("home.html", name=user, password=pw, points=pts, firstuser=name[0], firstpoints=points[0], seconduser=name[1], secondpoints=points[1], thirduser=name[2], thirdpoints=points[2])
+        return render_template("home.html", name=user, points=current.points if current else 0, firstuser=name[0], firstpoints=points[0], seconduser=name[1], secondpoints=points[1], thirduser=name[2], thirdpoints=points[2])
     flash("User not in session")
     return redirect(url_for("login"))
 
@@ -109,6 +108,97 @@ def deleet():
 @app.route("/view")
 def view():
     return render_template("view.html", values=users.query.all())
+
+@app.route("/sort1", methods=["GET", "POST"])
+def sort1():
+    return render_template("Q1Template.html")
+
+@app.route("/Recycle.html", methods=["GET", "POST"])
+def recycle():
+    if request.method == "POST":
+        if "user" in session:
+            user = session["user"]
+            currentboy = users.query.filter_by(name=user).first()
+            if currentboy:
+                if request.form['addpointsbutton'] == 'Return Home':
+                    currentboy.points = currentboy.points + 10;
+            db.session.commit()
+        return redirect(url_for("home"))
+    else:
+        return render_template("Recycle.html")
+
+@app.route("/Compost.html", methods=["GET", "POST"])
+def compost():
+    if request.method == "POST":
+        if "user" in session:
+            user = session["user"]
+            currentboy = users.query.filter_by(name=user).first()
+            if currentboy:
+                if request.form['addpointsbutton'] == 'Return Home':
+                    currentboy.points = currentboy.points + 10;
+            db.session.commit()
+        return redirect(url_for("home"))
+    else:
+        return render_template("Compost.html")
+
+@app.route("/Trash.html", methods=["GET", "POST"])
+def trash():
+    if request.method == "POST":
+        if "user" in session:
+            user = session["user"]
+            currentboy = users.query.filter_by(name=user).first()
+            if currentboy:
+                if request.form['addpointsbutton'] == 'Return Home':
+                    currentboy.points = currentboy.points + 5;
+            db.session.commit()
+        return redirect(url_for("home"))
+    else:
+        return render_template("Trash.html")
+
+@app.route("/Q1Template.html")
+def Q1Template():
+    return render_template("Q1Template.html")
+
+@app.route("/Q2Template.html")
+def Q2Template():
+    return render_template("Q2Template.html")
+
+@app.route("/Q3Template.html")
+def Q3Template():
+    return render_template("Q3Template.html")
+
+@app.route("/Q4Template.html")
+def Q4Template():
+    return render_template("Q4Template.html")
+
+@app.route("/Q5Template.html")
+def Q5Template():
+    return render_template("Q5Template.html")
+
+@app.route("/Q6Template.html")
+def Q6Template():
+    return render_template("Q6Template.html")
+
+@app.route("/Q7Template.html")
+def Q7Template():
+    return render_template("Q7Template.html")
+
+@app.route("/Q8Template.html")
+def Q8Template():
+    return render_template("Q8Template.html")
+
+@app.route("/Q9Template.html")
+def Q9Template():
+    return render_template("Q9Template.html")
+
+@app.route("/Q10Template.html")
+def Q10Template():
+    return render_template("Q10Template.html")
+
+@app.route("/Q11Template.html")
+def Q11Template():
+    return render_template("Q11Template.html")
+
 
 if __name__ == "__main__":
     db.create_all()
