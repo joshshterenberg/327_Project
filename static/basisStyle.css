@@ -83,7 +83,7 @@ section .contentBx .formBx
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-color: #EFC22F;
-  box-shadow: 10px 10px #cfab00;
+  box-shadow: 10px 10px rgba(239, 194, 47, 0.1);
   padding: 10px;
 }
 
@@ -217,7 +217,6 @@ section .contentBx .formBx .inputBx p a {
     justify-content: center;
     width: 80%;
     align-items: center;
-
     height: 100%;
     z-index: 1;
   }

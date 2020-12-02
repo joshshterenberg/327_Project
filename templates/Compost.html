@@ -16,26 +16,22 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
   <div class="container-fluid">
-    <a class="navbar-text">Binz</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-tarhet="#navbarResponsive">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+    <a class="navbar-text"><strong>Binz</strong></a>
+    <div id="navbarResponsive">
+      <ul class="navbar-nav ml-auto" style="display: inline;">
+        <li class="nav-item" style="float: right; margin: 0 7px;">
           <a class="nav-link" href="{{url_for("home")}}">Home</a>
         </li>
     </div>
   </div>
 </nav>
 
-
-<div class="row" style="margin-right: 0;">
+<div class="row" style="margin: 0; padding: 0 40px;">
   <div class="col-md-3">
   </div>
-  <div class="col-md-6">
-    <div class="question">
-    Put item into the compost to earn 10 points!
+  <div style="margin: 0 auto;">
+    <div class="question" style="font-size: max(3.2vw, 150%);">
+        Put the item in the compost or food waste bin (whichever is available). You have earned 10 points!
     </div>
   </div>
   <div class="col-md-3">
