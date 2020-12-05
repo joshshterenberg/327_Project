@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 app.secret_key = "repetition_legitimizes"
@@ -9,8 +10,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.permanent_session_lifetime = timedelta(minutes=5)
 
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 
 class users(db.Model):
+    __tablename__='users'
+
     _id = db.Column("id", db.Integer, primary_key=True)
     name = db.Column("name", db.String(100))
     password = db.Column("password", db.String(100))
